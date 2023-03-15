@@ -19,9 +19,24 @@
 .App__button-auth .button-auth {
   align-self: center;
   height: 10%;
-  width: 25%;
+  width: 30%;
   font-weight: 900;
   font-size: 24px;
+}
+@media (max-width: 1200px) {
+  .App__button-auth .button-auth {
+    width: 45%;
+  }
+}
+@media (max-width: 1000px) {
+  .App__button-auth .button-auth {
+    width: 60%;
+  }
+}
+@media (max-width: 800px) {
+  .App__button-auth .button-auth {
+    width: 80%;
+  }
 }
 
 .header-image {

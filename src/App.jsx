@@ -158,7 +158,7 @@ function App() {
               <header className="App__mainpage__header">
                 <Account account={account} logOut={logOut}/>
                 <img
-                  src="/img/header.png"
+                  src="img/header.png"
                   className="header-image"
                   alt="Rick and Morty"
                 />
