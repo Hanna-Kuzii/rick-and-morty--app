@@ -1,0 +1,35 @@
+.CardItem {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  height: 100%;
+}
+.CardItem__image img {
+  width: 100%;
+  height: 168px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.CardItem:hover .CardItem__description__name {
+  text-overflow: clip;
+  white-space: normal;
+  overflow: visible;
+}
+.CardItem__description {
+  margin: 12px 16px;
+  text-align: left;
+}
+.CardItem__description__name {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.CardItem__description__species {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.25px;
+  color: rgba(0, 0, 0, 0.6);
+}/*# sourceMappingURL=CardItem.css.map */

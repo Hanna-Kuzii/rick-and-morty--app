@@ -1,0 +1,65 @@
+.App {
+  height: 100vh;
+  &__mainpage {
+    margin: 40px auto 20px;
+    text-align: center;
+    width: 70.83%;
+
+    @media (max-width: 1400px) {
+      width: 86.67%;
+    }
+
+    &__header {
+    }
+  }
+  &__button-auth {
+    height: inherit;
+    display: flex;
+    justify-content: center;
+
+    & .button-auth {
+      align-self: center;
+      height: 10%;
+      width: 25%;
+      font-weight: 900;
+      font-size: 24px;
+    }
+  }
+}
+
+.header-image {
+  max-width: 600px;
+  max-height: 200px;
+
+  @media (max-width: 700px) {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.details-text {
+  height: 100px;
+  padding: 20px;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+  text-align: center;
+}
+
+.button-auth {
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 100px;
+  border: 1px solid;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  color: #616467;
+  box-shadow: inset 0 0 0 2px #616467;
+
+  &:hover {
+    background-color: #616467;
+    border-color: #000000;
+    color: #ffffff;
+  }
+}

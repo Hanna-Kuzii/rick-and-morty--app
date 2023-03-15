@@ -1,0 +1,36 @@
+.Search {
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  height: 56px;
+  margin: auto;
+  width: 100%;
+
+  &__elements {
+    margin: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    height: 26px;
+
+    &__logo {
+      width: 18px;
+      height: 18px;
+      margin: auto;
+    }
+
+    &__input {
+      background-color: inherit;
+      border: none;
+      width: 100%;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+
+      &:active,
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+.Account {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  transition: margin 0.5s ease-in-out;
+  -webkit-transition: margin 0.5s ease-in-out;
+  -ms-transition: margin 0.5s ease-in-out;
+  -o-transition: margin 0.5s ease-in-out;
+  -ms-transition: margin 0.5s ease-in-out;
+
+  &:hover .Account__profile__add {
+    visibility: visible;
+  }
+
+  &__profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto 0;
+
+    &__login {
+      font-weight: 700;
+      font-size: 22px;
+    }
+    &__add {
+      width: 60%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      visibility: hidden;
+
+      &-info {
+        &__option {
+          font-weight: 500;
+          font-size: 20px;
+        }
+
+        &__value {
+          font-weight: 700;
+          font-size: 20px;
+
+
+        }
+        & .email {
+          font-style: italic;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  &__logout {
+    // width: 10%;
+  }
+}

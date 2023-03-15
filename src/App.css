@@ -1,38 +1,62 @@
 .App {
+  height: 100vh;
+}
+.App__mainpage {
+  margin: 40px auto 20px;
+  text-align: center;
+  width: 70.83%;
+}
+@media (max-width: 1400px) {
+  .App__mainpage {
+    width: 86.67%;
+  }
+}
+.App__button-auth {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+}
+.App__button-auth .button-auth {
+  align-self: center;
+  height: 10%;
+  width: 25%;
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.header-image {
+  max-width: 600px;
+  max-height: 200px;
+}
+@media (max-width: 700px) {
+  .header-image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.details-text {
+  height: 100px;
+  padding: 20px;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.button-auth {
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 100px;
+  border: 1px solid;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  color: #616467;
+  box-shadow: inset 0 0 0 2px #616467;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.button-auth:hover {
+  background-color: #616467;
+  border-color: #000000;
+  color: #ffffff;
+}/*# sourceMappingURL=App.css.map */

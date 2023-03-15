@@ -1,0 +1,44 @@
+.Account {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  transition: margin 0.5s ease-in-out;
+  -webkit-transition: margin 0.5s ease-in-out;
+  -ms-transition: margin 0.5s ease-in-out;
+  -o-transition: margin 0.5s ease-in-out;
+  -ms-transition: margin 0.5s ease-in-out;
+}
+.Account:hover .Account__profile__add {
+  visibility: visible;
+}
+.Account__profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto 0;
+}
+.Account__profile__login {
+  font-weight: 700;
+  font-size: 22px;
+}
+.Account__profile__add {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  visibility: hidden;
+}
+.Account__profile__add-info__option {
+  font-weight: 500;
+  font-size: 20px;
+}
+.Account__profile__add-info__value {
+  font-weight: 700;
+  font-size: 20px;
+}
+.Account__profile__add-info .email {
+  font-style: italic;
+  text-decoration: underline;
+}/*# sourceMappingURL=Account.css.map */
