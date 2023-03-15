@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 10%;
+  align-items: center;
   margin-bottom: 40px;
   transition: margin 0.5s ease-in-out;
   -webkit-transition: margin 0.5s ease-in-out;
@@ -9,26 +11,67 @@
   -o-transition: margin 0.5s ease-in-out;
   -ms-transition: margin 0.5s ease-in-out;
 }
+@media (max-width: 800px) {
+  .Account {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .Account > div {
+    width: 100%;
+  }
+  .Account button {
+    font-size: 24px;
+    width: 50%;
+  }
+}
 .Account:hover .Account__profile__add {
   visibility: visible;
 }
 .Account__profile {
+  flex-grow: 4;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 80%;
+  align-items: center;
+  gap: 10%;
   margin: auto 0;
+}
+@media (max-width: 800px) {
+  .Account__profile {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .Account__profile:first-child {
+    margin: auto;
+  }
+  .Account__profile:hover :nth-child(2) {
+    display: block;
+  }
 }
 .Account__profile__login {
   font-weight: 700;
   font-size: 22px;
+  flex-grow: 1;
+  text-align: left;
 }
 .Account__profile__add {
-  width: 70%;
+  flex-grow: 3;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   visibility: hidden;
+}
+@media (max-width: 1000px) {
+  .Account__profile__add {
+    flex-direction: column;
+  }
+}
+@media (max-width: 800px) {
+  .Account__profile__add {
+    flex-direction: row;
+    flex-grow: 2;
+    display: none;
+  }
 }
 .Account__profile__add-info__option {
   font-weight: 500;
@@ -41,4 +84,7 @@
 .Account__profile__add-info .email {
   font-style: italic;
   text-decoration: underline;
+}
+.Account__logout {
+  flex-grow: 1;
 }/*# sourceMappingURL=Account.css.map */

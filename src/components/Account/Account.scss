@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 10%;
+  align-items: center;
   margin-bottom: 40px;
   transition: margin 0.5s ease-in-out;
   -webkit-transition: margin 0.5s ease-in-out;
@@ -9,27 +11,71 @@
   -o-transition: margin 0.5s ease-in-out;
   -ms-transition: margin 0.5s ease-in-out;
 
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 10px;
+    & > div {
+      width: 100%;
+    }
+
+    & button {
+      font-size: 24px;
+      width: 50%;
+    }
+  }
+
   &:hover .Account__profile__add {
     visibility: visible;
+
+
   }
 
   &__profile {
+    flex-grow: 4;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 80%;
+    align-items: center;
+    gap: 10%;
+    // width: 100%;
     margin: auto 0;
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+      gap: 10px;
+      &:first-child {
+        margin: auto;
+      }
+
+      &:hover :nth-child(2) {
+        display: block;
+      }
+    }
 
     &__login {
       font-weight: 700;
       font-size: 22px;
+      flex-grow: 1;
+      text-align: left;
     }
     &__add {
-      width: 70%;
+      flex-grow: 3;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       visibility: hidden;
+
+      @media (max-width: 1000px) {
+        flex-direction: column;
+      }
+
+      @media (max-width: 800px) {
+        flex-direction: row;
+        flex-grow: 2;
+        display: none;
+
+      }
+  
 
       &-info {
         &__option {
@@ -40,8 +86,6 @@
         &__value {
           font-weight: 700;
           font-size: 20px;
-
-
         }
         & .email {
           font-style: italic;
@@ -51,6 +95,6 @@
     }
   }
   &__logout {
-
+    flex-grow: 1;
   }
 }

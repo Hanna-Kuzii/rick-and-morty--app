@@ -23,16 +23,22 @@ function App() {
   let [page, setPage] = useState(
     JSON.parse(localStorage?.getItem("page")) || 1
   );
-
-  const [user, setUser] = useState([]);
-  const [account, setAccount] = useState([]);
+  const [user, setUser] = useState(
+    JSON.parse(localStorage?.getItem("user")) || []
+  );
+  const [account, setAccount] = useState(
+    JSON.parse(localStorage?.getItem("account")) || []
+  );
 
   const login = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
+    onSuccess: (codeResponse) => {
+      setUser(codeResponse);
+    },
     onError: (error) => console.log("Login Failed:", error),
   });
 
   useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
     if (user) {
       axios
         .get(
@@ -49,6 +55,7 @@ function App() {
         })
         .catch((err) => console.log(err));
     }
+    localStorage.setItem("account", JSON.stringify(account));
   }, [user]);
 
   // log out function to log the user out of google and set the account array to null
@@ -140,10 +147,9 @@ function App() {
       setCharacter((choosedCharacter = null));
     }
   }
-  console.log(account);
   return (
     <div className="App">
-      {account ? (
+      {account && account.length !== 0 ? (
         <>
           {choosedCharacterId !== -1 ? (
             <Details
@@ -156,7 +162,7 @@ function App() {
             <div className="App__mainpage">
               {" "}
               <header className="App__mainpage__header">
-                <Account account={account} logOut={logOut}/>
+                <Account account={account} logOut={logOut} />
                 <img
                   src="img/header.png"
                   className="header-image"
@@ -185,13 +191,12 @@ function App() {
               )}
             </div>
           )}
-          
         </>
       ) : (
         <div className="App__button-auth">
-          <button 
-            className="button-auth"
-            onClick={() => login()}>Sign in with Google 🚀 </button>
+          <button className="button-auth" onClick={() => login()}>
+            Sign in with Google 🚀{" "}
+          </button>
         </div>
       )}
     </div>
