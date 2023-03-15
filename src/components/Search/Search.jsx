@@ -5,7 +5,7 @@ export function Search({ filter, setFilter, searchCharacters }) {
     <div className="Search">
       <div className="Search__elements">
         <img
-          src="rick-and-morty--app/img/search.svg"
+          src="/img/search.svg"
           alt="logo search"
           className="Search__elements__logo"
         />

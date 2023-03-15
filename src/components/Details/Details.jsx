@@ -18,7 +18,7 @@ export function Details({
             }}
           >
             <img
-              src="rick-and-morty--app/img/arrow_back.svg"
+              src="/img/arrow_back.svg"
               alt="Arrow back"
               className="Details__back-arrow"
             />
