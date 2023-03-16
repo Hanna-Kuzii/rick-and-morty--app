@@ -14,5 +14,5 @@ function get(url, add) {
 }
 
 export const getCharacters = (add) => get('/character', add);
-// export const filterCharacters = (name) => get('/character', '', `?name=${name}`);
+
 

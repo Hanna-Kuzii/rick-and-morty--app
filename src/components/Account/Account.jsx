@@ -1,10 +1,10 @@
 import "./Account.css";
 
-export function Account({ account, logOut }) {
+export function Account({ account, logOut, loginType }) {
   return (
     <div className="Account">
       <div className="Account__profile">
-        <div className="Account__profile__login">You're logged in {`:)`}</div>
+        <div className="Account__profile__login">You're logged with {loginType}</div>
         <div className="Account__profile__add">
           <div className="Account__profile__add-info">
             <div className="Account__profile__add-info__option">Name:</div>

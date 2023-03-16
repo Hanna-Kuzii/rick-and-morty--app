@@ -5,9 +5,10 @@ import { Search } from "./components/Search/Search";
 import React, { useEffect, useState } from "react";
 import { Details } from "./components/Details/Details";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "react-google-login";
 import axios from "axios";
 import { Account } from "./components/Account/Account";
-
+import FacebookLogin from "react-facebook-login";
 function App() {
   let [charactersFromAPI, setCharactersFromAPI] = useState(
     JSON.parse(localStorage?.getItem("characters")) || []
@@ -23,6 +24,10 @@ function App() {
   let [page, setPage] = useState(
     JSON.parse(localStorage?.getItem("page")) || 1
   );
+  const [logIn, setLogIn] = useState(
+    JSON.parse(localStorage?.getItem("logIn")) || ""
+  );
+
   const [user, setUser] = useState(
     JSON.parse(localStorage?.getItem("user")) || []
   );
@@ -30,16 +35,18 @@ function App() {
     JSON.parse(localStorage?.getItem("account")) || []
   );
 
-  const login = useGoogleLogin({
+  const loginGoogle = useGoogleLogin({
     onSuccess: (codeResponse) => {
       setUser(codeResponse);
+      setLogIn("Google");
     },
     onError: (error) => console.log("Login Failed:", error),
   });
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
-    if (user) {
+    localStorage.setItem("logIn", JSON.stringify(logIn));
+    if (user.length !== 0) {
       axios
         .get(
           `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
@@ -58,11 +65,38 @@ function App() {
     localStorage.setItem("account", JSON.stringify(account));
   }, [user]);
 
-  // log out function to log the user out of google and set the account array to null
-  const logOut = () => {
-    googleLogout();
-    setAccount(null);
+  const loginFacebook = (response) => {
+    if (response.status === "unknown") {
+      setLogIn("");
+      return false;
+    }
+    setUser(response);
+    setAccount(response);
+
+    if (response.accessToken) {
+      setLogIn("Facebook");
+    } else {
+      setLogIn("");
+    }
   };
+
+  const logOut = () => {
+    if (logIn === "Google") {
+      googleLogout();
+      setAccount([]);
+      setLogIn("");
+      setUser([]);
+    } else {
+      setAccount([]);
+      setLogIn("");
+      setUser([]);
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("account", JSON.stringify(account));
+    localStorage.setItem("logIn", JSON.stringify(logIn));
+  }, [account, logIn]);
 
   useEffect(() => {
     const characters = () => {
@@ -149,7 +183,7 @@ function App() {
   }
   return (
     <div className="App">
-      {account && account.length !== 0 ? (
+      {logIn !== "" ? (
         <>
           {choosedCharacterId !== -1 ? (
             <Details
@@ -162,7 +196,7 @@ function App() {
             <div className="App__mainpage">
               {" "}
               <header className="App__mainpage__header">
-                <Account account={account} logOut={logOut} />
+                <Account account={account} logOut={logOut} loginType={logIn} />
                 <img
                   src="img/header.png"
                   className="header-image"
@@ -194,9 +228,20 @@ function App() {
         </>
       ) : (
         <div className="App__button-auth">
-          <button className="button-auth" onClick={() => login()}>
-            Sign in with Google 🚀{" "}
-          </button>
+          <button onClick={() => loginGoogle()}>Sign in with Google </button>
+          <FacebookLogin
+            appId="876988586739647"
+            autoLoad={false}
+            fields="name,email,picture"
+            scope="public_profile,email,user_friends"
+            callback={loginFacebook}
+            textButton="Sign in with Facebook"
+            render={(renderProps) => (
+              <button onClick={renderProps.onClick}>
+                Sign in with Facebook
+              </button>
+            )}
+          />
         </div>
       )}
     </div>
