@@ -84,9 +84,8 @@ function App() {
     localStorage.setItem("filter", JSON.stringify(filter));
     setCharactersFromAPI((charactersFromAPI = []));
     localStorage.setItem("characters", JSON.stringify(charactersFromAPI));
-    setError(errorSearch = 0);
+    setError((errorSearch = 0));
     localStorage.setItem("errorSearch", JSON.stringify(errorSearch));
-
 
     setAccount([]);
     setLogIn("");
@@ -186,71 +185,70 @@ function App() {
   }
   return (
     <div className="App">
-      {logIn !== "" ? (
-        <>
-          {choosedCharacterId !== -1 ? (
-            <Details
-              character={choosedCharacter}
-              choosedCharacterId={choosedCharacterId}
-              setChoosedCharacter={setChoosedCharacter}
-              chooseCharacter={chooseCharacter}
-            />
-          ) : (
-            <div className="App__mainpage">
-              {" "}
-              <header className="App__mainpage__header">
-                <Account
-                  account={account}
-                  logOut={logOut}
-                  loginType={logIn}
-                />
-                <img
-                  src="img/header.png"
-                  className="header-image"
-                  alt="Rick and Morty"
-                />
-              </header>
-              <Search
-                filter={filter}
-                setFilter={setFilter}
-                searchCharacters={searchCharacters}
-              />
-              {charactersFromAPI.length === 0 ? (
-                <div className="details-text">LOADING...</div>
-              ) : (
-                <CardsList
-                  characters={charactersFromAPI}
-                  choosedCharacterId={choosedCharacterId}
-                  setChoosedCharacter={setChoosedCharacter}
-                  chooseCharacter={chooseCharacter}
-                  errorSearch={errorSearch}
-                  page={page}
-                  setPage={setPage}
-                  filter={filter}
-                  loadCharacters={loadCharacters}
-                />
-              )}
-            </div>
-          )}
-        </>
-      ) : (
-        <div className="App__button-auth">
-          <button onClick={() => loginGoogle()}>Sign in with Google </button>
-          <FacebookLogin
-            appId="885448849475198"
-            autoLoad={false}
-            fields="name,email,picture"
-            scope="public_profile,email,user_friends"
-            callback={loginFacebook}
-            textButton="Sign in with Facebook"
-            render={(renderProps) => (
-              <button onClick={renderProps.onClick}>
-                Sign in with Facebook
-              </button>
-            )}
+      <>
+        {choosedCharacterId !== -1 ? (
+          <Details
+            character={choosedCharacter}
+            choosedCharacterId={choosedCharacterId}
+            setChoosedCharacter={setChoosedCharacter}
+            chooseCharacter={chooseCharacter}
           />
-        </div>
-      )}
+        ) : (
+          <div className="App__mainpage">
+            {" "}
+            <header className="App__mainpage__header">
+              {logIn === "" ? (
+                <div className="App__button-auth">
+                  <button onClick={() => loginGoogle()}>
+                    Sign in with Google{" "}
+                  </button>
+                  <FacebookLogin
+                    appId="885448849475198"
+                    autoLoad={false}
+                    fields="name,email,picture"
+                    scope="public_profile,email,user_friends"
+                    callback={loginFacebook}
+                    textButton="Sign in with Facebook"
+                    render={(renderProps) => (
+                      <button onClick={renderProps.onClick}>
+                        Sign in with Facebook
+                      </button>
+                    )}
+                  />
+                </div>
+              ) : (
+                <Account account={account} logOut={logOut} loginType={logIn} />
+              )}
+
+              <img
+                src="img/header.png"
+                className="header-image"
+                alt="Rick and Morty"
+              />
+            </header>
+            <Search
+              filter={filter}
+              setFilter={setFilter}
+              searchCharacters={searchCharacters}
+            />
+            {charactersFromAPI.length === 0 ? (
+              <div className="details-text">LOADING...</div>
+            ) : (
+              <CardsList
+                characters={charactersFromAPI}
+                choosedCharacterId={choosedCharacterId}
+                setChoosedCharacter={setChoosedCharacter}
+                chooseCharacter={chooseCharacter}
+                errorSearch={errorSearch}
+                page={page}
+                setPage={setPage}
+                filter={filter}
+                loadCharacters={loadCharacters}
+              />
+            )}
+          </div>
+        )}
+      </>
     </div>
   );
 }

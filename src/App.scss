@@ -24,9 +24,11 @@ span,
     display: flex;
     justify-content: center;
     gap: 30px;
+    margin-bottom: 10px;
 
-    @media (max-width: 1000px) {
+    @media (max-width: 600px) {
       flex-direction: column;
+      gap: 10px;
     }
 
     & > * {
@@ -38,11 +40,12 @@ span,
       border-radius: 100px;
       border: 1px solid;
       font-weight: 700;
-      font-size: 28px;
+      font-size: 20px;
       text-align: center;
-      background-color: #ced1d3;
+      background-color: #fff;
       color: #616467;
       box-shadow: inset 0 0 0 2px #616467;
+      transition: all 0.5s ease-in-out;
 
       &:hover {
         background-color: #616467;
@@ -50,18 +53,8 @@ span,
         color: #ffffff;
       }
 
-      @media (max-width: 1200px) {
-        width: 45%;
-      }
-
-      @media (max-width: 1000px) {
-        height: 15%;
-        width: 60%;
-        font-size: 32px;
-      }
       @media (max-width: 800px) {
-        height: 20%;
-        width: 80%;
+        width: 90%;
       }
     }
   }
@@ -108,8 +101,11 @@ span,
   height: min-content;
   align-self: center;
 }
-span {
+span.style {
   display: flex;
   justify-content: center;
   box-sizing: border-box;
+  transition: none;
+  transition: all 0.5s ease-in-out;
+
 }
