@@ -43,6 +43,7 @@ function App() {
   });
 
   useEffect(() => {
+    document.getElementsByTagName("span")[0].removeAttribute("style");
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("logIn", JSON.stringify(logIn));
     if (user.length !== 0) {
