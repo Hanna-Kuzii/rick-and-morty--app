@@ -5,7 +5,6 @@ import { Search } from "./components/Search/Search";
 import React, { useEffect, useState } from "react";
 import { Details } from "./components/Details/Details";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
-import { GoogleLogin } from "react-google-login";
 import axios from "axios";
 import { Account } from "./components/Account/Account";
 import FacebookLogin from "react-facebook-login";
@@ -81,15 +80,20 @@ function App() {
   };
 
   const logOut = () => {
+    setFilter((filter = ""));
+    localStorage.setItem("filter", JSON.stringify(filter));
+    setCharactersFromAPI((charactersFromAPI = []));
+    localStorage.setItem("characters", JSON.stringify(charactersFromAPI));
+    setError(errorSearch = 0);
+    localStorage.setItem("errorSearch", JSON.stringify(errorSearch));
+
+
+    setAccount([]);
+    setLogIn("");
+    setUser([]);
+
     if (logIn === "Google") {
       googleLogout();
-      setAccount([]);
-      setLogIn("");
-      setUser([]);
-    } else {
-      setAccount([]);
-      setLogIn("");
-      setUser([]);
     }
   };
 
@@ -119,8 +123,7 @@ function App() {
     };
 
     characters();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [logIn]);
 
   const loadCharacters = (page, filter) => {
     localStorage.setItem("page", JSON.stringify(page));
@@ -196,7 +199,11 @@ function App() {
             <div className="App__mainpage">
               {" "}
               <header className="App__mainpage__header">
-                <Account account={account} logOut={logOut} loginType={logIn} />
+                <Account
+                  account={account}
+                  logOut={logOut}
+                  loginType={logIn}
+                />
                 <img
                   src="img/header.png"
                   className="header-image"
