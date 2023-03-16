@@ -230,7 +230,7 @@ function App() {
         <div className="App__button-auth">
           <button onClick={() => loginGoogle()}>Sign in with Google </button>
           <FacebookLogin
-            appId="876988586739647"
+            appId="885448849475198"
             autoLoad={false}
             fields="name,email,picture"
             scope="public_profile,email,user_friends"
